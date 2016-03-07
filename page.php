@@ -1,21 +1,33 @@
 <?php get_header();  ?>
 
-<div class="main">
-  <div class="container">
+<div class="nav-button">
+  <div class="nav-button-line"></div>
+</div>
 
-    <div class="content">
-      <?php // Start the loop ?>
-      <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+<section class="content-image-container" style="background-image:url(<?php echo hackeryou_get_thumbnail_url($post); ?>);">
+</section>
 
-        <h2><?php the_title(); ?></h2>
-        <?php the_content(); ?>
+<section class="content-text-container">
+  <?php // Start the loop ?>
+  <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+    <h1><?php the_title(); ?></h1>
+    <?php the_content(); ?>
 
-      <?php endwhile; // end the loop?>
-    </div> <!-- /,content -->
+  <?php endwhile; // end the loop?>
 
-    <?php get_sidebar(); ?>
+  <section class="nav-overlay">
+    <nav class="nav-pages">
+      <div class="logo-container">
+        <img src="<?php site_icon_url(); ?>" alt="">
+      </div>
+      <?php wp_nav_menu( array(
+        'container' => '' 
+      )) ?>
+    </nav>
+  </section>
 
-  </div> <!-- /.container -->
-</div> <!-- /.main -->
+</section>
 
-<?php get_footer(); ?>
+
+
+

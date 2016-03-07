@@ -1,14 +1,133 @@
-ul.menu {
-	margin: 0;
-	padding: 0;
+.nav-home {
+	margin: 0 auto;
+
+	ul {
+		margin: 0;
+		padding: 0;
+		list-style: none;
+		display: flex;
+		justify-content: center;
+	}
+
 	li {
-		display: inline;
-		margin-right: 10px;
-		a {
-			color: #333;
-			padding: 10px;
-			background: #333;
-			color: white;
+		margin: 20px;
+	}
+
+	a {
+		display: inline-block;
+		width: 100%;
+		padding: 5px;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $gold;
+		font-family: $font-fam-sans;
+		font-size: $font-size-base * 2;
+
+		&:visited {
+			color: $gold;
 		}
 	}
+}
+
+.nav-overlay {
+	position: absolute;
+	width: 50%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255,255,255,0.95);
+	display: none;
+}
+
+.nav-pages {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.nav-button {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: $gold;
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 30px;
+	z-index: 10;
+	cursor: pointer;
+}
+
+.nav-button-line {
+	width: 60%;
+	height: 2px;
+	background: $white;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	transition: all 0.5s;
+
+	&:before, &:after {
+		content: '';
+		width: 100%;
+		height: 2px;
+		background: $white;
+		position: absolute;
+		transition: all 0.5s;
+	}
+
+	&:before {
+		top: 6px;
+	}
+
+	&:after {
+		bottom: 6px;
+	}
+}
+
+.nav-button.open {
+	.nav-button-line {
+		background: inherit;
+
+		&:before, &:after {
+			width: 75%;
+		}
+
+		&:before {
+			transform: rotate(220deg);
+			top: 4px;
+		}
+
+		&:after {
+			transform: rotate(-220deg);
+			bottom: 4px
+		}
+	}
+}
+
+
+.nav-pages {
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		text-decoration: none;
+		text-transform: uppercase;
+		color: $gold;
+		font-family: $font-fam-sans;
+		font-size: $font-size-base * 2;
+	}
+
+	li {
+		margin-bottom: 25px;
+	}
+}
+
+#nav-below {
+	display: flex;
+	justify-content: space-between;
 }

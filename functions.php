@@ -10,7 +10,7 @@ function theme_setup() {
 	*  all images will be cropped to thumbnail size (below), as well as
 	*  a square size (also below). You can add more of your own crop
 	*  sizes with add_image_size. */
-	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'post-thumbnails', array('post','page') );
 	set_post_thumbnail_size(120, 90, true);
 	add_image_size('square', 150, 150, true);
 
@@ -46,6 +46,8 @@ function hackeryou_styles(){
 	wp_enqueue_style('style', get_stylesheet_uri() );
 
 	wp_enqueue_style('fontawesome', 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css');
+
+	wp_enqueue_style('googlefonts', 'https://fonts.googleapis.com/css?family=Fjalla+One|Playfair+Display:400,400italic,700');
 }
 
 add_action( 'wp_enqueue_scripts', 'hackeryou_styles');
@@ -76,6 +78,14 @@ function hackeryou_scripts() {
   wp_enqueue_script(
     'scripts', //handle
     get_template_directory_uri() . '/js/main.min.js', //source
+    array( 'jquery', 'plugins' ), //dependencies
+    null, // version number
+    true //load in footer
+  );
+
+  wp_enqueue_script(
+    'justifiedgallery', //handle
+    get_template_directory_uri() . '/js/jquery.justifiedGallery.min.js', //source
     array( 'jquery', 'plugins' ), //dependencies
     null, // version number
     true //load in footer
@@ -276,3 +286,27 @@ function get_post_parent($post) {
 		return $post->ID;
 	}
 }
+
+/* get thumbnail url */
+function hackeryou_get_thumbnail_url($post) {
+	$imageID = get_post_thumbnail_id($post->ID);
+	$imageURL = wp_get_attachment_url($imageID);
+	return $imageURL;
+}
+
+/*set up custom header */
+$defaults = array(
+	'default-image' => get_template_directory_uri() . '/images/img-greenvan.jpeg',
+	'random-default' => false,
+	'width' => '1440px',
+	'height' => '1024px',
+	'flex-height' => false,
+	'flex-width' => false,
+	'default-text-color' => '',
+	'header-text' => true,
+	'uploads' => true,
+	'wp-head-callback' => '',
+	'admin-head-callback' => '',
+	'admin-preview-callback' => '',
+);
+add_theme_support( 'custom-header', $defaults );

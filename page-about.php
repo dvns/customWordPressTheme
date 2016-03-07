@@ -4,13 +4,19 @@
   <div class="nav-button-line"></div>
 </div>
 
-<section class="content-image-container" style="background-image:url(<?php echo get_template_directory_uri() . '/images/img-grandma2-min.jpg'; ?>);">
+<section class="content-image-container" style="background-image:url(<?php echo hackeryou_get_thumbnail_url($post); ?>);">
 </section>
 
 <section class="content-text-container">
-	<h2>YOLO! Don't waste your time here.</h2>
-	<h1><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) )?>">Check out my cool shit.</a></h1>
-
+  <article>
+    <h2>LOREM IPSUM</h2>
+    <?php // Start the loop ?>
+    <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
+      <h1><?php the_title(); ?></h1>
+      <?php the_content(); ?>
+    <?php endwhile; // end the loop?>
+    
+  </article>
 
   <section class="nav-overlay">
     <nav class="nav-pages">

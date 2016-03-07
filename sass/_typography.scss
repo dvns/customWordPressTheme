@@ -1,97 +1,85 @@
+$white: #fff;
+$black: #000;
+$grey: #7e7e7e;
+$gold: #DAD3BC;
+$gold-dark: darken($gold, 10%);
+$gold-light: lighten($gold, 10%);
+$blue: #58ADCA;
+
+$font-size-base: 1.6rem;
+$font-size-head: $font-size-base * 3;
+$font-size-subhead: $font-size-base * 1.75;
+
+$font-fam-serif: 'Playfair Display', serif;
+$font-fam-sans: 'Fjalla One', sans-serif;
+
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	font-size: 16px;
+	font-size: $font-size-base;
+	font-family: $font-fam-serif;
+	font-weight: 400;
+}
+
 a {
-	color: #BA209B;
-	text-decoration: none;
-	&:hover {
-		color: #D424B1;
-	}
+	color: $gold;
 }
 
-/* paragraphs */
-
-p {
-	line-height: 1.5;
-}
-
-/*blockquotes*/
-
-blockquote {
-	background: #F7F7F7;
+h1, h2, h3, h4, h5, h6 {
 	margin: 0;
-	padding: 20px;
-	p {
-		margin-top: 0;
+	padding: 0;
+}
+
+h1 {
+	font-weight: 400;
+	font-size: $font-size-head;
+	padding-bottom: 25px;
+}
+
+
+h2 {
+	font-family: $font-fam-sans;
+	font-size: $font-size-subhead;
+	color: $gold;
+	text-transform: uppercase;
+	font-weight: 400;
+	padding: 25px;
+
+	a {
+		color: $gold;
+		text-decoration: none;
 	}
 }
 
-/*tables*/
-
-table {
-	td {
-		padding: 10px;
-	}
-	tr td:first {
-		padding-right: 0;
-	}
+h3 {
+	color: $grey;
+	font-weight: 400;
+	padding-bottom: 50px;
 }
 
-/*def lists*/
-
-dt {
-	font-weight: 600;
-	padding-bottom: 5px;
+article p {
+	padding-top: 25px;
+	line-height: 2;
 }
 
-dd {
-	padding: 10px;
-	margin-left: 10px;
+#nav-below a {
+	color: $gold;
+	font-family: $font-fam-sans;
 }
 
-/*lists*/
-
-ul li, ol li {
-	padding: 3px;
-}
-
-/*PRE*/
-
-pre {
-	background: #F7F7F7;
-	padding: 10px;
-	border-radius: 4px;
-	border: 1px solid #ccc;
-}
-
-
-/*
-====================================
-Global Classes / Wordpress Specific
-====================================
-*/
-
-.aligncenter {
-	text-align: center;
-	margin: 0 auto;
-}
-
-.alignleft {
-	float: left;
-}
-
-.alignright {
-	float: right;
-}
-
-img {
-	&.alignleft {
-		padding-right: 5px;
-	}
-	&.alignright {
-		padding-left: 5px;
+.blog {
+	h1 a {
+		color: $black;
+	} 
+	h2 {
+		padding-bottom: 0; 
 	}
 }
 
-.clear {
-	width: 100%;
-	float: left;
-	clear: both;
+.category h1 a, .error404 h1 a {
+	color: $black;	
 }
